@@ -1,5 +1,6 @@
 import "./globals.css";
-import { WalletContext } from '../context/WalletContext';
+import { WalletContextProvider } from '../context/WalletContext';
+import '@solana/wallet-adapter-react-ui/styles.css'; // Default styles for wallet adapter UI
 
 export default function RootLayout({
   children,
@@ -10,9 +11,9 @@ export default function RootLayout({
     <html lang="en">
       <head />
       <body>
-        <WalletContext>
+        <WalletContextProvider>
           {children}
-        </WalletContext>
+        </WalletContextProvider>
       </body>
     </html>
   );
