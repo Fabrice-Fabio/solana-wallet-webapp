@@ -2,6 +2,8 @@
 
 import ConnectWalletButton from '@/components/ConnectWalletButton';
 import { useWallet } from '@solana/wallet-adapter-react';
+import '@solana/wallet-adapter-react-ui/styles.css'; // Default styles for wallet adapter UI
+
 
 
 
