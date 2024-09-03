@@ -1,37 +1,25 @@
 // components/ConnectWalletButton.tsx
 "use client";
-
-import React, { FC, useEffect } from 'react';
-import { useWallet } from '@solana/wallet-adapter-react';
-import { WalletError } from '@solana/wallet-adapter-base';
+import { FC, useCallback } from "react";
+import { useWallet } from "@solana/wallet-adapter-react";
+import { WalletMultiButton } from "@solana/wallet-adapter-react-ui";
 
 const ConnectWalletButton: FC = () => {
-    const { wallet, connect, connected, publicKey, disconnect } = useWallet();
+  const { wallet, connect, connecting, connected } = useWallet();
 
-    useEffect(() => {
-        if (connected && publicKey) {
-            console.log('Wallet connected:', publicKey.toBase58());
-        }
-    }, [connected, publicKey]);
+  const handleClick = useCallback(() => {
+    if (!wallet) return;
 
-    const handleConnect = async () => {
-        if (!connected) {
-            try {
-                await connect();
-                console.log('Connected:', publicKey?.toBase58());
-            } catch (error) {
-                console.error('Failed to connect wallet:', (error as WalletError).message);
-            }
-        } else {
-            console.log('Already connected');
-        }
-    };
+    connect().catch((error) => console.error("Error connecting to wallet", error));
+  }, [wallet, connect]);
 
-    return (
-        <button onClick={handleConnect}>
-            {connected ? `Connected: ${publicKey?.toBase58()}` : 'Connect Wallet'}
-        </button>
-    );
+  return (
+    <div>
+      <WalletMultiButton onClick={handleClick}>
+        {connecting ? "Connecting..." : connected ? "Connected" : "Connect Wallet"}
+      </WalletMultiButton>
+    </div>
+  );
 };
 
 export default ConnectWalletButton;
