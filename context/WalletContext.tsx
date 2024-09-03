@@ -5,11 +5,10 @@ import {
   ConnectionProvider,
   WalletProvider,
 } from "@solana/wallet-adapter-react";
-// @ts-ignore
 import { SolanaMobileWalletAdapter,
     createDefaultAuthorizationResultCache,
     createDefaultAddressSelector,
- } from "@solana-mobile/wallet-adapter-mobile"
+ } from "@solana-mobile/wallet-adapter-mobile";
 import { clusterApiUrl } from "@solana/web3.js";
 import { WalletAdapterNetwork } from "@solana/wallet-adapter-base";
 
