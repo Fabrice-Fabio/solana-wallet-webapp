@@ -29,4 +29,5 @@ declare module '@solana-mobile/wallet-adapter-mobile' {
 
     export function createDefaultAuthorizationResultCache(): any;
     export function createDefaultAddressSelector(): any;
+    export function createDefaultWalletNotFoundHandler(): any;
 }
