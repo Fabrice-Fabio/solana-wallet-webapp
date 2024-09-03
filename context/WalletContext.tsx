@@ -5,6 +5,7 @@ import {
   ConnectionProvider,
   WalletProvider,
 } from "@solana/wallet-adapter-react";
+// @ts-ignore
 import { SolanaMobileWalletAdapter,
     createDefaultAuthorizationResultCache,
     createDefaultAddressSelector,
