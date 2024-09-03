@@ -23,8 +23,8 @@ const WalletContextProvider: FC<WalletContextProviderProps> = ({ children }) => 
     const endpoint = useMemo(() => clusterApiUrl(network), []);
 
     const mobileWallet = useMemo(() => [
-        new PhantomWalletAdapter(),
-        new SolflareWalletAdapter({ network }),
+        new PhantomWalletAdapter({ network }),
+        //new SolflareWalletAdapter({ network }),
         // new SolanaMobileWalletAdapter({
         //     cluster: network,
         //     appIdentity: {
