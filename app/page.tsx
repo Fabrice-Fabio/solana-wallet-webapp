@@ -18,7 +18,7 @@ export default function Home() {
     if (publicKey) {
       try {
         // Connect to the Solana cluster
-        const connection = new Connection("https://api.metaplex.solana.com/", 'confirmed');
+        const connection = new Connection('https://api.mainnet-beta.solana.com', 'confirmed');
 
         // Fetch the balance in lamports (1 SOL = 1e9 lamports)
         const lamports = await connection.getBalance(publicKey);
