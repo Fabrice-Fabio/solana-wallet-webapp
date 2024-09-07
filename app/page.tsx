@@ -49,7 +49,7 @@ export default function Home() {
           {balance !== null ? (
             <p>Your Balance: {balance} SOL</p>
           ) :
-            <p>Can't get the user balance</p>
+            <p>Cant get the user balance</p>
           }
         </div>
       ) : (
