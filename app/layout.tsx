@@ -17,7 +17,7 @@ export default function RootLayout({
 }) {
   const network = WalletAdapterNetwork.Mainnet; // Can be 'mainnet-beta' or 'testnet'
   const endpoint = useMemo(() => clusterApiUrl(network), [network]);
-  const wallets = useMemo(() => [new PhantomWalletAdapter()], [network]);
+  const wallets = useMemo(() => [new PhantomWalletAdapter()], []);
 
   return (
     <html lang="en">

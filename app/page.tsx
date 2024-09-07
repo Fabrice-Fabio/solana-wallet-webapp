@@ -48,9 +48,9 @@ export default function Home() {
           <p>Your Public Key: {walletKey}</p>
           {balance !== null ? (
             <p>Your Balance: {balance} SOL</p>
-          ) : (
+          ) :
             <p>Can't get the user balance</p>
-          )}
+          }
         </div>
       ) : (
         <p>No wallet connected</p>
