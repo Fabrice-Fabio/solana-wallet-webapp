@@ -12,7 +12,7 @@ export default function Home() {
   const { publicKey, sendTransaction } = useWallet();
   const [walletKey, setWalletKey] = useState<string | null>(null);
   const [balance, setBalance] = useState<number | null>(null);
-  const [transactionStatus, setTransactionStatus] = useState<string | null>(null);
+  const [transactionSignatures, setTransactionSignatures] = useState<string[]>([]);
   const rpc = "https://solana-mainnet.core.chainstack.com/8c40d3506bbc7b836ec2617aebfd33cc";
 
   // Function to fetch the user's SOL balance
@@ -81,10 +81,11 @@ export default function Home() {
       await connection.confirmTransaction(signature, 'confirmed');
 
       // Set transaction status after successful confirmation
-      setTransactionStatus(`Transaction successful with signature: ${signature}`);
+      
+      setTransactionSignatures(prevSignatures => [...prevSignatures, signature]);
+
     } catch (error) {
       console.error('Transaction failed', error);
-      setTransactionStatus('Transaction failed');
     }
   }, [publicKey, sendTransaction]);
 
@@ -103,8 +104,25 @@ export default function Home() {
             <p>Cant get the user balance</p>
           }
           <br /><br />
-          <button onClick={sendTransactionWithMemo}>Transaction</button>
-          {transactionStatus && <p>{transactionStatus}</p>}
+          <button style={{ border: '1px solid orange', padding: '5px'}} onClick={sendTransactionWithMemo}>Click here to mint</button>
+          
+          <div style={{ marginTop: '20px' }}>
+            <h3>Minted Transactions:</h3>
+            {transactionSignatures.length > 0 ? (
+              <ul>
+                {transactionSignatures.map((signature, index) => (
+                  <li key={index}>
+                    <a href={`https://explorer.solana.com/tx/${signature}?cluster=mainnet-beta`} target="_blank" rel="noopener noreferrer">
+                      {signature}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <p>No transactions yet</p>
+            )}
+          </div>
+
         </div>
       ) : (
         <p>No wallet connected</p>
