@@ -104,9 +104,10 @@ export default function Home() {
             <p>Cant get the user balance</p>
           }
           <br /><br />
-          <button style={{ border: '1px solid orange', padding: '5px'}} onClick={sendTransactionWithMemo}>Click here to mint</button>
           
-          <div style={{ marginTop: '20px' }}>
+          <div style={{ marginTop: '20px', textAlign: 'center' }}>
+            <button style={{ border: '1px solid orange', padding: '5px'}} onClick={sendTransactionWithMemo}>Click here to mint</button>
+
             <h3>Minted Transactions:</h3>
             {transactionSignatures.length > 0 ? (
               <ul>
